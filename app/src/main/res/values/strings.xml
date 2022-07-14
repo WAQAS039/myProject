@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Digital Quran</string>
+    <string name="abc">ABC</string>
+    <string name="Title">Learn Holy Quran</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

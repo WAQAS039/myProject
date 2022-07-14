@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "572654373001",
+    "firebase_url": "https://userdatabase-e2d30-default-rtdb.firebaseio.com",
+    "project_id": "userdatabase-e2d30",
+    "storage_bucket": "userdatabase-e2d30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572654373001:android:5c837ea827f75dc0ec5e58",
+        "android_client_info": {
+          "package_name": "com.example.agorawithuserwithlistview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "572654373001-2it9k2elpb4hkovitujcv2fijf3rti7k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsfTHyNBbbPpZ02a9-r06LUa6ZoOelSXg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "572654373001-2it9k2elpb4hkovitujcv2fijf3rti7k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572654373001:android:725dab3042244fa6ec5e58",
+        "android_client_info": {
+          "package_name": "com.example.learnquran"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "572654373001-2it9k2elpb4hkovitujcv2fijf3rti7k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsfTHyNBbbPpZ02a9-r06LUa6ZoOelSXg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "572654373001-2it9k2elpb4hkovitujcv2fijf3rti7k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
