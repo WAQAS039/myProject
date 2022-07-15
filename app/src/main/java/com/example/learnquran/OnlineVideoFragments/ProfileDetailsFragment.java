@@ -38,6 +38,7 @@ public class ProfileDetailsFragment extends Fragment {
     TextView tvFullName, tvPassword, tvAbout;
     DatabaseReference databaseReference;
     String userName;
+    String profileImageUri;
     String changeFullName, changeUserName,changePassword,changeAbout;
     public ProfileDetailsFragment() {
         // Required empty public constructor
@@ -49,6 +50,8 @@ public class ProfileDetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile_details, container, false);
         Init(view);
         userName = getArguments().getString("userNameDb");
+        profileImageUri = getArguments().getString("imageUri");
+        Toast.makeText(getContext(), profileImageUri, Toast.LENGTH_SHORT).show();
         // firebase
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://userdatabase-e2d30-default-rtdb.firebaseio.com");
         getDataFromDatabase();
@@ -168,26 +171,9 @@ public class ProfileDetailsFragment extends Fragment {
     }
 
     void getImageDownloadUrl(){
-
-        StorageReference imagePath = FirebaseStorage
-                .getInstance()
-                .getReference()
-                .child("image/"+userName);
-        Task<Uri> imageUrl = imagePath.getDownloadUrl()
-                .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Glide.with(getContext())
-                                .load(uri)
-                                .error("error")
-                                .into(imageProfilePic);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
-                    }
-                });
-
+        Glide.with(getContext())
+                .load(Uri.parse(profileImageUri))
+                .error("error")
+                .into(imageProfilePic);
     }
 }

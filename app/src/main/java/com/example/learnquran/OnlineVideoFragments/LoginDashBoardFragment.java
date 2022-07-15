@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.learnquran.Activities.OnlineVideoActivity;
+import com.example.learnquran.Models.ImageUriModel;
 import com.example.learnquran.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,6 +39,7 @@ public class LoginDashBoardFragment extends Fragment {
     Button btnJoinChannel;
     String userName;
     boolean isMicOn = false;
+    ImageUriModel imageUriModel;
     public LoginDashBoardFragment() {
         // Required empty public constructor
     }
@@ -74,6 +76,7 @@ public class LoginDashBoardFragment extends Fragment {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("userNameDb",userName);
+                bundle.putString("imageUri",imageUriModel.getImageUri().toString());
                 Navigation.findNavController(view).navigate(R.id.action_loginDashBoardFragment_to_profileDetailsFragment,bundle);
             }
         });
@@ -88,6 +91,7 @@ public class LoginDashBoardFragment extends Fragment {
                 intent.putExtra("userName",userName);
                 intent.putExtra("channelName",channelName);
                 intent.putExtra("IsMicOn",isMicOn);
+                intent.putExtra("imageUri",imageUriModel.getImageUri().toString());
                 startActivity(intent);
             }
         });
@@ -107,24 +111,6 @@ public class LoginDashBoardFragment extends Fragment {
             }
         });
     }
-
-    void getImageWithBitMapProfileImage(){
-        StorageReference imagePath = FirebaseStorage.getInstance().getReference().child("image/"+userName);
-        final long MAX_BYTES = 1024*1024*5;
-        imagePath.getBytes(MAX_BYTES).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                showToast("Success");
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-                ProfileDetails.setImageBitmap(bitmap);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-            }
-        });
-    }
     void getImageDownloadUrl(){
 
         StorageReference imagePath = FirebaseStorage
@@ -139,6 +125,7 @@ public class LoginDashBoardFragment extends Fragment {
                                 .load(uri)
                                 .error("error")
                                 .into(ProfileDetails);
+                        imageUriModel = new ImageUriModel(uri);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

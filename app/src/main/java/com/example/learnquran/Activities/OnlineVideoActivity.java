@@ -11,12 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -24,14 +19,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.learnquran.Adopters.OnlineUserAdopters;
 import com.example.learnquran.Models.OnlineUserModel;
 import com.example.learnquran.QuranFragments.QuranFragment;
 import com.example.learnquran.R;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -56,6 +48,7 @@ public class OnlineVideoActivity extends AppCompatActivity {
     // Agora Work
     String channelName;
     String localUserName;
+    String profileImageUri;
     boolean isMicOn;
     RtcEngine rtcEngine;
     String appId = "47493aaa59f24423be437a2def31e015";
@@ -94,6 +87,7 @@ public class OnlineVideoActivity extends AppCompatActivity {
         // Init variables
         channelName = getIntent().getStringExtra("channelName");
         localUserName = getIntent().getStringExtra("userName");
+        profileImageUri = getIntent().getStringExtra("imageUri");
         isMicOn = getIntent().getBooleanExtra("isMicOn",false);
 
         // array list to store online users
@@ -281,13 +275,12 @@ public class OnlineVideoActivity extends AppCompatActivity {
                                     public void onSuccess(Uri uri) {
                                         onlineUsersArrayList.add(new OnlineUserModel(userName,id,uri,micOnOrOff));
                                         onlineUserAdopters.notifyDataSetChanged();
+                                        setAdapter();
                                         setCountOnlinePeople();
                                     }
                                 });
                             }
-                            setAdapter();
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                         }
@@ -345,15 +338,11 @@ public class OnlineVideoActivity extends AppCompatActivity {
                             // Get User Profile pic
                             StorageReference imagePath = FirebaseStorage.getInstance().getReference().child("image/"+userName);
                             if (userName != null) {
-                                imagePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        onlineUsersArrayList.clear();
-                                        onlineUsersArrayList.add(new OnlineUserModel(userName,id,uri,micOnOrOff));
-                                        onlineUserAdopters.notifyDataSetChanged();
-                                        setCountOnlinePeople();
-                                    }
-                                });
+                                onlineUsersArrayList.clear();
+                                onlineUsersArrayList.add(new OnlineUserModel(userName,id,Uri.parse(profileImageUri),micOnOrOff));
+                                onlineUserAdopters.notifyDataSetChanged();
+                                setAdapter();
+                                setCountOnlinePeople();
                             }
                         }
                         @Override
@@ -364,7 +353,6 @@ public class OnlineVideoActivity extends AppCompatActivity {
             });
         }
     };
-
 
     private void setAdapter() {
         onlineUserAdopters = new OnlineUserAdopters(onlineUsersArrayList,this);
