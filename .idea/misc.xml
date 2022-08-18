@@ -3,26 +3,43 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2111111111111111" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable-v24/people.xml" value="0.21203703703703702" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable-v24/shap.xml" value="0.12864583333333332" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/adoptiveicon.xml" value="0.20925925925925926" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/back.xml" value="0.2111111111111111" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/book_svg.xml" value="0.2203125" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/bookmark_fil.xml" value="0.2203125" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/camera.xml" value="0.2111111111111111" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/divder_line.xml" value="0.2101851851851852" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/edit.xml" value="0.2111111111111111" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/email.xml" value="0.2101851851851852" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/end.xml" value="0.2111111111111111" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/end_call.xml" value="0.21203703703703702" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/ic_app_icon.xml" value="0.2111111111111111" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/ic_baseline_library_music_24.xml" value="0.12916666666666668" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/ic_book.xml" value="0.2111111111111111" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2111111111111111" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/ic_launcher_custom.xml" value="0.1125" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/ic_launcher_round_custom.xml" value="0.1125" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/info.xml" value="0.2064814814814815" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/logout.xml" value="0.2111111111111111" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/mic_off.xml" value="0.2203125" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/mic_on.xml" value="0.2064814814814815" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/offline.xml" value="0.2203125" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/online_user_green_icon.xml" value="0.2064814814814815" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/person.xml" value="0.2101851851851852" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/rounded_shape_for_layout.xml" value="0.7678571428571429" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/secure.xml" value="0.2101851851851852" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/setting.xml" value="0.2169230769230769" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/speaker.xml" value="0.2111111111111111" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/speaker_black.xml" value="0.2111111111111111" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/splash_bg.xml" value="0.2111111111111111" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/drawable/stop.xml" value="0.2169230769230769" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/activity_all_list.xml" value="0.18" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/activity_online_metting.xml" value="0.2033514492753623" />
-        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/activity_online_video.xml" value="0.2" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/activity_online_video.xml" value="0.46296296296296297" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/activity_splash_screen.xml" value="0.19701086956521738" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/activity_video.xml" value="0.1897644927536232" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/activity_video_call.xml" value="0.1" />
@@ -31,15 +48,16 @@
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/bookmark_list_layout_for_recycleview.xml" value="0.25" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/bottomsheet_for_online_people.xml" value="0.2" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/edit_profile_detail_layout.xml" value="0.33" />
-        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_add_profile_picture.xml" value="0.15" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_add_profile_picture.xml" value="0.25" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_all_list.xml" value="0.25" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_audio_list.xml" value="0.20416666666666666" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_bookmarks_list.xml" value="0.18" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_creat_meeting.xml" value="0.2033514492753623" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_create_new_meeting.xml" value="0.1897644927536232" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_forget_password.xml" value="0.18" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_join_meeting.xml" value="0.1897644927536232" />
-        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_login.xml" value="0.25" />
-        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_login_dash_board.xml" value="0.25" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_login.xml" value="0.22" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_login_dash_board.xml" value="0.2" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_metting_details.xml" value="0.18885869565217392" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_new_meeting_join_meeting_layout.xml" value="0.1897644927536232" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_notes_details.xml" value="0.22" />
@@ -49,11 +67,13 @@
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_quran.xml" value="0.5117565698478561" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_setting.xml" value="0.25" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_setting_.xml" value="0.33" />
-        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_sign_up.xml" value="0.33" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_surah_names.xml" value="0.11730072463768115" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_update_password.xml" value="0.18" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_verify_phone_number.xml" value="0.25" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/fragment_video.xml" value="0.11302083333333333" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/item_audio.xml" value="0.22" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/network_issue_dialog_for_login_signup.xml" value="0.25" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/notes_list_layout_for_recycleview.xml" value="0.18614130434782608" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/online_users_layour.xml" value="0.5" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/online_users_layout.xml" value="0.18" />
@@ -63,6 +83,8 @@
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/surah_name_layout_for_listview.xml" value="0.22" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/layout/user_profile_layout.xml" value="0.11302083333333333" />
         <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/menu/quran_app_appbar_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2203125" />
+        <entry key="..\:/Android/ANDROID PROJECTS/LearnQuran/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.14907407407407408" />
       </map>
     </option>
   </component>

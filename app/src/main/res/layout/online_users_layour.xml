@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
                 app:srcCompat="@drawable/person" />
         </androidx.cardview.widget.CardView>
@@ -50,16 +50,33 @@
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/user_name"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         android:layout_weight="1"
-        android:drawablePadding="10dp"
-        android:text="TextView"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/clientRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="4dp"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+    </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:layout_width="30dp"

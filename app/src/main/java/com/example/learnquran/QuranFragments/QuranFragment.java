@@ -33,6 +33,8 @@ import com.example.learnquran.Models.Urdu_Translation;
 import com.example.learnquran.R;
 import com.example.learnquran.audioRecodingClasses.AudioRecAdopter;
 import com.example.learnquran.audioRecodingClasses.AudioRecorder;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,6 +65,7 @@ public class QuranFragment extends Fragment {
     AudioRecorder audioRecorder;
     ArrayList<String> audioArrayList;
     Chronometer timer;
+    EditText NotesEnglishTextData, NotesTitleData;
     public QuranFragment() {
         // Required empty public constructor
     }
@@ -72,10 +75,13 @@ public class QuranFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_quran, container, false);
         Init(view);
-        ShowQuranText = getActivity().getIntent().getBooleanExtra("ShowArabic",true);
-        ShowQuranTrans = getActivity().getIntent().getBooleanExtra("ShowTrans",true);
-        ArabicFont = getActivity().getIntent().getIntExtra("ArabicSize",20);
-        TransFont = getActivity().getIntent().getIntExtra("TransSize",20);
+        ShowQuranText = getActivity().getIntent().getBooleanExtra("ShowArabic", true);
+        ShowQuranTrans = getActivity().getIntent().getBooleanExtra("ShowTrans", true);
+        ArabicFont = getActivity().getIntent().getIntExtra("ArabicSize", -1);
+        TransFont = getActivity().getIntent().getIntExtra("TransSize", -1);
+        if(ArabicFont != -1 && TransFont != -1){
+            SaveSetting(ShowQuranText, ShowQuranTrans, ArabicFont, TransFont);
+        }
         SetQuranText();
         SetOnClickOnQuranText();
         SetOnScrollListener();
@@ -158,11 +164,31 @@ public class QuranFragment extends Fragment {
         timer = view.findViewById(R.id.timer);
         timer.setVisibility(View.GONE);
     }
-    void OpenDatabase(){
+
+    // STORE SETTINGS
+    void SaveSetting(boolean showQuran, boolean showTrans , int fontQuran , int fontTrans){
+        SharedPreferences preferences = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("showQuran", showQuran);
+        editor.putBoolean("showTrans", showTrans);
+        editor.putInt("fontQuran", fontQuran);
+        editor.putInt("fontTrans", fontTrans);
+        editor.apply();
+    }
+    // GET SETTINGS
+    void GetSetting() {
+        SharedPreferences preferences = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
+        ShowQuranText = preferences.getBoolean("showQuran", true);
+        ShowQuranTrans = preferences.getBoolean("showTrans", true);
+        ArabicFont = preferences.getInt("fontQuran", 20);
+        TransFont = preferences.getInt("fontQuran", 20);
+    }
+        void OpenDatabase(){
         database = new Database(getContext());
         database.open();
     }
     void SetQuranText(){
+        GetSetting();
         OpenDatabase();
         quranText_modelArrayList = new ArrayList<>();
         urdu_translationArrayList = new ArrayList<>();
@@ -186,6 +212,7 @@ public class QuranFragment extends Fragment {
                 CheckBookMarkPosition(position);
                 RecyclePosition = position;
                 WhichSurah(SurahIDNumber);
+                saveLastPositionInFirebase(position);
             }
         });
     }
@@ -200,7 +227,6 @@ public class QuranFragment extends Fragment {
         dialog.setContentView(R.layout.addnew_notes_dialog_layout);
         dialog.setCancelable(false);
         dialog.show();
-        EditText NotesEnglishTextData, NotesTitleData;
         NotesEnglishTextData = dialog.findViewById(R.id.YourNoteMessageEditText);
         NotesTitleData = dialog.findViewById(R.id.YourNoteNameEditText);
         NotesTitleData.setText("MyNote");
@@ -212,9 +238,13 @@ public class QuranFragment extends Fragment {
             public void onClick(View view) {
                 String MyNoteMessageTextData = NotesEnglishTextData.getText().toString();
                 String MyNoteTitleTextData = NotesTitleData.getText().toString();
-                OpenDatabase();
-                database.AddNotes(MyNoteTitleTextData,SurahIdData,ayahIdData,VerseTextData,MyNoteMessageTextData,SurahName);
-                dialog.dismiss();
+                if(!validateNoteTitle() | !validateNoteMessage()){
+                    return;
+                }else{
+                    OpenDatabase();
+                    database.AddNotes(MyNoteTitleTextData,SurahIdData,ayahIdData,VerseTextData,MyNoteMessageTextData,SurahName);
+                    dialog.dismiss();
+                }
             }
         });
         NoteCancelButton.setOnClickListener(new View.OnClickListener() {
@@ -243,6 +273,7 @@ public class QuranFragment extends Fragment {
 //        checking.setText(SurahName);
         CheckBookMarkPosition(LastPosition);
         WhichSurah(SurahIDNumber);
+        saveLastPositionInFirebase(LastPosition);
     }
 
     // Get Surah Name
@@ -264,15 +295,29 @@ public class QuranFragment extends Fragment {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                int LastPosition = manager.findFirstVisibleItemPosition();
-//                checking.setText(LastPosition + ".");
-                SaveLastAyahPosition(LastPosition);
-                GetQuranTextModelData(LastPosition);
-                WhichSurah(SurahIDNumber);
+                int LastPosition = 0;
+                if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+                    LastPosition = manager.findFirstVisibleItemPosition();
+                    SaveLastAyahPosition(LastPosition);
+                    GetQuranTextModelData(LastPosition);
+                    WhichSurah(SurahIDNumber);
+                } else if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    int lastPosition = manager.findFirstVisibleItemPosition();
+                    saveLastPositionInFirebase(lastPosition);
+                }
             }
         });
     }
 
+    void saveLastPositionInFirebase(int lastPos){
+        if (getArguments() != null) {
+            String userName = getArguments().getString("userNameForQuran") != null ? getArguments().getString("userNameForQuran") : null;
+            DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference();
+            if (userName != null) {
+                firebaseDatabase.child("RecyclePos").child(userName).child("position").setValue(lastPos);
+            }
+        }
+    }
     public int CheckBookMarkPosition(int position){
         OpenDatabase();
         AyahPositionArraylist = database.AyahPositionFromBookmarksList();
@@ -301,8 +346,6 @@ public class QuranFragment extends Fragment {
         VoiceRecorderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // You Need to Code Here
-                // When User Will Click this button so recording should start
                 if(!IsRecording){
                     try {
                         timer.setVisibility(View.VISIBLE);
@@ -372,6 +415,43 @@ public class QuranFragment extends Fragment {
             audioRecorder.stopRecord();
             IsRecording = false;
             VoiceRecorderButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.voice,0,0,0);
+        }
+    }
+
+    public void onUpdateRecycleItemPosition(int rvPos) {
+        if(rvPos != -1) {
+            QuranTextRecycleView.smoothScrollToPosition(rvPos);
+            GetQuranTextModelData(rvPos);
+            WhichSurah(SurahIDNumber);
+            SaveLastAyahPosition(rvPos);
+        }
+    }
+
+    public boolean validateNoteTitle(){
+        String MyNoteTitleTextData = NotesTitleData.getText().toString();
+        if(MyNoteTitleTextData.isEmpty()){
+            NotesTitleData.setError("Can not be Empty");
+            return false;
+        }else if(MyNoteTitleTextData.length() > 50){
+            NotesTitleData.setError("Name should be less than 50 character");
+            return false;
+        }else{
+            NotesTitleData.setError(null);
+            return true;
+        }
+    }
+
+    public boolean validateNoteMessage(){
+        String MyNoteMessageTextData = NotesEnglishTextData.getText().toString();
+        if(MyNoteMessageTextData.isEmpty()){
+            NotesEnglishTextData.setError("Can not be Empty");
+            return false;
+        }else if(MyNoteMessageTextData.length() > 200){
+            NotesEnglishTextData.setError("should be less than 200 character");
+            return false;
+        }else{
+            NotesEnglishTextData.setError(null);
+            return true;
         }
     }
 

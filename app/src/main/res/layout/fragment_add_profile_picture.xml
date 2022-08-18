@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/addprofile_background"
     tools:context=".OnlineVideoFragments.AddProfilePictureFragment">
 
 
@@ -11,50 +12,53 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/fav"
         android:fontFamily="@font/font"
         android:gravity="center"
         android:text="More Details"
-        android:textColor="@color/white"
-        android:textSize="21sp"
+        android:textColor="@color/black"
+        android:textSize="51sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvAddAbout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+    <LinearLayout
+        android:id="@+id/linearLayout11"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:hint="About You"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvInputFullName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:hint="Full Name">
 
-    <Button
-        android:id="@+id/addProfilepicture"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="@color/fav"
-        android:text="Add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAddAbout" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/addProfilepicture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Add" />
+    </LinearLayout>
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
@@ -76,21 +80,13 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
             android:src="@drawable/person" />
     </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:src="@drawable/meeting"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addProfilepicture" />
-
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvChangeImage"
+        android:id="@+id/cvAddImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"

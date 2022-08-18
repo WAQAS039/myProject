@@ -28,6 +28,13 @@
             android:text="Online Class"
             android:textColor="@color/white"
             android:textSize="21sp" />
+        <ImageView
+            android:id="@+id/imageSpeaker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_margin="15dp"
+            app:srcCompat="@drawable/speaker_black" />
 
         <ImageView
             android:id="@+id/imageMeetingInfo"
@@ -37,51 +44,48 @@
             android:layout_weight="0.1"
             app:srcCompat="@drawable/info" />
 
+
+
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="40dp"
-        android:backgroundTint="@color/white"
+        android:id="@+id/cvEndCall"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:layout_marginBottom="30dp"
         app:cardCornerRadius="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvEndCall"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/fav"
-            app:cardCornerRadius="40dp">
-
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/end" />
-        </androidx.cardview.widget.CardView>
+            app:srcCompat="@drawable/end" />
     </androidx.cardview.widget.CardView>
 
     <FrameLayout
         android:id="@+id/loadWholeQuranFrame"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintBottom_toTopOf="@id/constraintLayout"
+        >
 
     </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:background="@color/fav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,18 +95,22 @@
             android:id="@+id/btnCountpeople"
             layout="@layout/people_counter"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="50dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/btnMic"
             android:layout_width="40dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/mic_on" />

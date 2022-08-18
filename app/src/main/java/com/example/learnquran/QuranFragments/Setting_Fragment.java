@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 
@@ -21,11 +22,11 @@ import com.example.learnquran.Activities.MainActivity;
 import com.example.learnquran.R;
 
 public class Setting_Fragment extends Fragment {
-    Switch ArabicSwitch,UrduSwitch;
-    SeekBar ArabicSeekBar,TranslationSeekBar;
-    Button SaveSetting;
-    Boolean ShowArabic,ShowTranslation;
-    int ArabicFontSize,TranslationFontSize;
+    Switch arabicSwitch, urduSwitch;
+    SeekBar arabicSeekBar, translationSeekBar;
+    Button btnSaveSetting;
+    Boolean showArabic, showTranslation;
+    int arabicFontSize, translationFontSize;
     public Setting_Fragment() {
         // Required empty public constructor
     }
@@ -44,68 +45,94 @@ public class Setting_Fragment extends Fragment {
         Init(view);
         getArabicStatus();
         getTransStatus();
-        ArabicSwitch.setChecked(ShowArabic);
-        UrduSwitch.setChecked(ShowTranslation);
-        ArabicSeekBar.setProgress(ArabicFontSize);
-        TranslationSeekBar.setProgress(TranslationFontSize);
-        ArabicSeekBar.setMin(20);
-        TranslationSeekBar.setMin(20);
-        ArabicSeekBar.setMax(100);
-        TranslationSeekBar.setMax(100);
-        SaveSetting.setOnClickListener(new View.OnClickListener() {
+        arabicSwitch.setEnabled(true);
+        eitherArabicOrTrans();
+        arabicSwitch.setChecked(showArabic);
+        urduSwitch.setChecked(showTranslation);
+        arabicSeekBar.setProgress(arabicFontSize);
+        translationSeekBar.setProgress(translationFontSize);
+        arabicSeekBar.setMin(20);
+        translationSeekBar.setMin(20);
+        arabicSeekBar.setMax(100);
+        translationSeekBar.setMax(100);
+        btnSaveSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ArabicSwitch.isChecked())
-                    SaveArabicStatus(true);
-                else
-                    SaveArabicStatus(false);
-                if(UrduSwitch.isChecked())
-                    SaveTransStatus(true);
-                else
-                    SaveTransStatus(false);
+                if (arabicSwitch.isChecked()) {
+                    saveArabicStatus(true);
+                }
+                else {
+                    saveArabicStatus(false);
+                }
+                if(urduSwitch.isChecked()) {
+                    saveTransStatus(true);
+                }
+                else {
+                    saveTransStatus(false);
+                }
                 getArabicStatus();
                 getTransStatus();
                 Intent intent = new Intent(getContext(),MainActivity.class);
-                intent.putExtra("ShowArabic",ShowArabic);
-                intent.putExtra("ShowTrans",ShowTranslation);
-                intent.putExtra("ArabicSize",ArabicFontSize);
-                intent.putExtra("TransSize",TranslationFontSize);
+                intent.putExtra("ShowArabic", showArabic);
+                intent.putExtra("ShowTrans", showTranslation);
+                intent.putExtra("ArabicSize", arabicFontSize);
+                intent.putExtra("TransSize", translationFontSize);
                 startActivity(intent);
             }
         });
         return view;
     }
     void Init(View view){
-        ArabicSwitch = view.findViewById(R.id.arabicTextSwitch);
-        UrduSwitch = view.findViewById(R.id.urduTextSwitch);
-        SaveSetting = view.findViewById(R.id.saveSettingButton);
-        ArabicSeekBar = view.findViewById(R.id.ArabicseekBar);
-        TranslationSeekBar = view.findViewById(R.id.TranslationseekBar);
+        arabicSwitch = view.findViewById(R.id.arabicTextSwitch);
+        urduSwitch = view.findViewById(R.id.urduTextSwitch);
+        btnSaveSetting = view.findViewById(R.id.saveSettingButton);
+        arabicSeekBar = view.findViewById(R.id.ArabicseekBar);
+        translationSeekBar = view.findViewById(R.id.TranslationseekBar);
     }
 
     public void getArabicStatus(){
         SharedPreferences sharedPrefs = getActivity().getSharedPreferences("Arabic", MODE_PRIVATE);
-        ShowArabic = sharedPrefs.getBoolean("ShowArabic",true);
-        ArabicFontSize = sharedPrefs.getInt("ArabicFontSize",20);
+        showArabic = sharedPrefs.getBoolean("ShowArabic",true);
+        arabicFontSize = sharedPrefs.getInt("ArabicFontSize",20);
     }
     public void getTransStatus(){
         SharedPreferences sharedPrefs = getActivity().getSharedPreferences("Translation", MODE_PRIVATE);
-        ShowTranslation = sharedPrefs.getBoolean("ShowTranslation",true);
-        TranslationFontSize = sharedPrefs.getInt("TranslationFontSize",20);
+        showTranslation = sharedPrefs.getBoolean("ShowTranslation",true);
+        translationFontSize = sharedPrefs.getInt("TranslationFontSize",20);
     }
 
-    public  void SaveArabicStatus(boolean IsCheckedForArabic){
+    public  void saveArabicStatus(boolean IsCheckedForArabic){
         SharedPreferences.Editor editor = getActivity().getSharedPreferences("Arabic", MODE_PRIVATE).edit();
         editor.putBoolean("ShowArabic", IsCheckedForArabic);
-        editor.putInt("ArabicFontSize",ArabicSeekBar.getProgress());
+        editor.putInt("ArabicFontSize", arabicSeekBar.getProgress());
         editor.apply();
-        editor.commit();
     }
-    public  void SaveTransStatus(boolean check){
+    public  void saveTransStatus(boolean check){
         SharedPreferences.Editor editor = getActivity().getSharedPreferences("Translation", MODE_PRIVATE).edit();
         editor.putBoolean("ShowTranslation",check);
-        editor.putInt("TranslationFontSize",TranslationSeekBar.getProgress());
+        editor.putInt("TranslationFontSize", translationSeekBar.getProgress());
         editor.apply();
-        editor.commit();
     }
+
+    void eitherArabicOrTrans(){
+        arabicSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(!urduSwitch.isChecked()){
+                    arabicSwitch.setChecked(true);
+                }
+                urduSwitch.setEnabled(b);
+            }
+        });
+        urduSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(!arabicSwitch.isChecked()){
+                    urduSwitch.setChecked(true);
+                }
+                arabicSwitch.setEnabled(b);
+            }
+        });
+    }
+
 }

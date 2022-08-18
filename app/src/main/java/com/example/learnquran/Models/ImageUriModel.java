@@ -5,9 +5,7 @@ import android.net.Uri;
 public class ImageUriModel {
     Uri imageUri;
 
-    public ImageUriModel(Uri imageUri) {
-        this.imageUri = imageUri;
-    }
+    public ImageUriModel(){}
 
     public Uri getImageUri() {
         return imageUri;

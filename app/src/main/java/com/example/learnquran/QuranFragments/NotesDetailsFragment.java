@@ -85,10 +85,15 @@ public class NotesDetailsFragment extends Fragment {
                 database.open();
                 if(NoteEngTxt.equals(NoteEnglishTextData.getText().toString()))
                 {
-                    // DO Nothing
+                    NoteEnglishTextData.setError("Same");
+                }else if(NoteEnglishTextData.getText().toString().equals("")){
+                    NoteEnglishTextData.setError("Can not be Empty");
                 }
                 else
+                {
+                    NoteEngTxt = NoteEnglishTextData.getText().toString();
                     database.UpdateNoteEnglishText(NoteEnglishTextData.getText().toString(),NotesId);
+                }
             }
         });
     }

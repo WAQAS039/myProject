@@ -1,6 +1,7 @@
 package com.example.learnquran.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
@@ -13,13 +14,6 @@ import com.example.learnquran.R;
 public class AllListActivity extends AppCompatActivity {
     int choice = -1;
     int SettingChoice = -1;
-    int NotesId;
-    String NotesNameTxt;
-    int SurahIdTxt;
-    int VerseIdTxt;
-    String VerseTextTxt;
-    String NoteEngTxt;
-    String SurahNameTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -104,10 +104,6 @@ public class QuranText_Adopter extends RecyclerView.Adapter<QuranText_Adopter.Ho
         index = position;
     }
 
-    public int GetPos(){
-        return holder.getAdapterPosition();
-    }
-
     public String convertToArabic(int value)
     {
         String newValue = (((((((((((value+"")

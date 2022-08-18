@@ -4,19 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class SignUpUserModel {
-    String fullName;
-    String userName;
-    String password;
-    String about;
-
+    private String fullName;
+    private String userName;
+    private String password;
     public SignUpUserModel(){
     }
 
-    public SignUpUserModel(String fullName, String userName, String password, String about) {
+    public SignUpUserModel(String fullName, String userName, String password) {
         this.fullName = fullName;
         this.userName = userName;
         this.password = password;
-        this.about = about;
     }
 
     public String getFullName() {
@@ -41,13 +38,5 @@ public class SignUpUserModel {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getAbout() {
-        return about;
-    }
-
-    public void setAbout(String about) {
-        this.about = about;
     }
 }
